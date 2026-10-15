@@ -1,0 +1,2214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Портфолио и резюме Корякиной Луизы Алексеевны — junior frontend-разработчика. React, JavaScript, адаптивная вёрстка." />
+  <title>JLIXSD — Корякина Луиза · Junior Frontend-разработчик</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Grenze+Gotisch:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050505;
+      --panel: rgba(255, 255, 255, .028);
+      --border: rgba(255, 255, 255, .09);
+      --border-strong: rgba(255, 255, 255, .18);
+      --text: #ececec;
+      --muted: #6e6e6e;
+      --muted-2: #4a4a4a;
+      --accent: #ffd400;
+      --accent-glow: rgba(255, 212, 0, .22);
+      --accent-glow-strong: rgba(255, 212, 0, .45);
+      --radius: 18px;
+      --max-width: 1180px;
+      --gothic: "Grenze Gotisch", serif;
+      --gothic-display: "Changa One", "Grenze Gotisch", sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--bg);
+      font-family: var(--mono);
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: .01em;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-track { background: #0a0a0a; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, var(--accent), #b89a00);
+      border-radius: 999px;
+      border: 2px solid #0a0a0a;
+      transition: background .3s ease;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(180deg, #fff2a8, var(--accent));
+      box-shadow: 0 0 12px var(--accent-glow-strong);
+    }
+    html {
+      scrollbar-color: var(--accent) #0a0a0a;
+      scrollbar-width: thin;
+    }
+
+    .glow-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .glow-bg span {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,212,0,.55), rgba(255,212,0,.15) 40%, transparent 70%);
+      filter: blur(60px);
+      opacity: 0;
+      animation: glowPulse linear infinite;
+      will-change: transform, opacity;
+    }
+    @keyframes glowPulse {
+      0%   { opacity: 0;    transform: scale(.6); }
+      30%  { opacity: .35;  transform: scale(1); }
+      70%  { opacity: .22;  transform: scale(1.1); }
+      100% { opacity: 0;    transform: scale(1.3); }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -50%;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: .07;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      animation: grain 1.2s steps(2) infinite;
+      mix-blend-mode: overlay;
+    }
+    @keyframes grain {
+      0%   { transform: translate(0,0); }
+      25%  { transform: translate(-2%, 1%); }
+      50%  { transform: translate(1%, -2%); }
+      75%  { transform: translate(-1%, 2%); }
+      100% { transform: translate(2%, -1%); }
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 20%, rgba(255,212,0,.06), transparent 55%),
+        radial-gradient(ellipse at 50% 100%, rgba(0,0,0,.85), transparent 70%),
+        radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,.7) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .wrap { width: min(var(--max-width), calc(100% - 40px)); margin: 0 auto; }
+
+    /* === БЕГУЩАЯ СТРОКА === */
+    .marquee {
+      position: relative;
+      width: 100%;
+      background: var(--accent);
+      color: #060606;
+      overflow: hidden;
+      border-top: 1px solid rgba(0,0,0,.15);
+      border-bottom: 1px solid rgba(0,0,0,.15);
+      padding: 14px 0;
+      z-index: 10;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 35s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-content {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      padding-right: 36px;
+      white-space: nowrap;
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: .82rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .marquee-content span { display: inline-flex; align-items: center; gap: 36px; }
+    .marquee-content span::after {
+      content: "•";
+      font-size: 1.1rem;
+      opacity: .6;
+    }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* === ШАПКА === */
+    .topbar {
+      position: sticky;
+      top: 14px;
+      z-index: 50;
+      margin: 0 auto;
+      width: min(var(--max-width), calc(100% - 32px));
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(8,8,8,.72);
+      backdrop-filter: blur(14px) saturate(.7);
+      box-shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 10px 40px rgba(0,0,0,.6);
+    }
+
+    .nav {
+      position: relative;
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      flex: 0 0 auto;
+    }
+    .nav-links a { position: relative; transition: color .3s; }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -6px;
+      width: 100%; height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .brand {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--gothic);
+      font-weight: 900;
+      font-size: 1.7rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: var(--text);
+      transition: color .4s, text-shadow .4s;
+      perspective: 600px;
+      transform-style: preserve-3d;
+      animation: spinName 18s linear infinite;
+      will-change: transform;
+    }
+    .brand:hover {
+      color: var(--accent);
+      text-shadow: 0 0 22px var(--accent-glow);
+      animation-play-state: paused;
+    }
+    @keyframes spinName {
+      0%   { transform: translate(-50%, -50%) rotateY(0deg); }
+      100% { transform: translate(-50%, -50%) rotateY(360deg); }
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      color: var(--text);
+      background: transparent;
+      font-family: var(--mono);
+      font-size: .74rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .3s ease;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+    .button:hover {
+      background: var(--accent);
+      color: #060606;
+      border-color: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+      animation: btnPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 0 30px var(--accent-glow); }
+      50%      { box-shadow: 0 0 45px var(--accent-glow-strong); }
+    }
+    .button.primary {
+      background: var(--accent);
+      color: #060606;
+      border-color: var(--accent);
+      font-weight: 500;
+      box-shadow: 0 0 34px var(--accent-glow);
+      animation: btnPulse 2.4s ease-in-out infinite;
+    }
+    .button.primary:hover {
+      background: #ffffff;
+      border-color: #ffffff;
+      color: #060606;
+      box-shadow: 0 0 40px rgba(255,255,255,.18);
+    }
+
+    /* === HERO === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 0 80px;
+      gap: 22px;
+      position: relative;
+      width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: .7rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      animation: fadeUp .9s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .face-wrap {
+      position: relative;
+      width: min(760px, 70vw);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      animation: floatPhoto 7s ease-in-out infinite;
+    }
+    @keyframes floatPhoto {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-14px); }
+    }
+
+    .face-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: grayscale(1) contrast(1.1) brightness(.85);
+      user-select: none;
+      pointer-events: none;
+      -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
+              mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
+      transition: filter .6s ease;
+    }
+
+    .hero-sub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      max-width: 720px;
+      margin-top: 6px;
+      animation: fadeUp 1.1s .15s ease both;
+    }
+    .hero-sub h2 {
+      margin: 0;
+      font-family: var(--mono);
+      font-weight: 300;
+      font-size: clamp(1rem, 1.8vw, 1.3rem);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .28em;
+    }
+    .accent-text {
+      color: var(--accent);
+      animation: textPulse 3s ease-in-out infinite;
+    }
+    @keyframes textPulse {
+      0%, 100% { text-shadow: 0 0 10px var(--accent-glow); }
+      50%      { text-shadow: 0 0 24px var(--accent-glow-strong); }
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: .95rem;
+      max-width: 640px;
+      margin: 0;
+      font-weight: 300;
+    }
+    .hero-copy strong { color: var(--text); font-weight: 500; }
+
+    .hero-tagline {
+      color: var(--text);
+      font-size: .95rem;
+      max-width: 640px;
+      margin: 0;
+      text-align: center;
+      animation: fadeUp 1.2s .3s ease both;
+    }
+    .hero-tagline strong { color: var(--accent); }
+
+    .hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 18px;
+      max-width: 720px;
+      margin-top: 4px;
+    }
+    .hero-fact {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .82rem;
+      color: var(--muted);
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      transition: border-color .3s, color .3s, box-shadow .3s;
+    }
+    .hero-fact:hover {
+      border-color: rgba(255,212,0,.4);
+      color: var(--text);
+      box-shadow: 0 0 20px -8px var(--accent-glow-strong);
+    }
+    .hero-fact b { color: var(--accent); font-weight: 500; }
+
+    .type-line {
+      display: inline-block;
+      border-right: 2px solid var(--accent);
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 3.2s steps(34, end) 1.2s forwards, blink .9s step-end infinite;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; justify-content: center; }
+
+    section { padding: 90px 0; }
+    .section-head { margin-bottom: 32px; }
+    .section-kicker {
+      color: var(--accent);
+      font-size: .7rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 8px 0 0;
+      font-family: var(--mono);
+      font-weight: 300;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      position: relative;
+    }
+    .section-desc { max-width: 680px; margin: 14px 0 0; color: var(--muted); font-size: .92rem; }
+
+    .grid { display: grid; gap: 14px; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .panel {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      backdrop-filter: blur(6px);
+      transition:
+        transform .45s cubic-bezier(.2,.8,.3,1),
+        border-color .45s ease,
+        background .45s ease,
+        box-shadow .45s ease;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,212,0,.18), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(255,212,0,.10), transparent 50%);
+      opacity: 0;
+      transition: opacity .55s ease;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .panel .panel-line {
+      position: absolute;
+      top: 0; left: 0;
+      width: 40px; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: .6;
+      transition: width .6s cubic-bezier(.2,.8,.3,1), opacity .4s ease, box-shadow .4s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .panel:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,212,0,.45);
+      background: rgba(255,255,255,.04);
+      box-shadow:
+        0 0 0 1px rgba(255,212,0,.15),
+        0 20px 45px -20px rgba(0,0,0,.9),
+        0 0 40px -10px var(--accent-glow);
+    }
+    .panel:hover::before { opacity: 1; }
+    .panel:hover .panel-line {
+      width: 100%;
+      opacity: 1;
+      box-shadow: 0 0 12px var(--accent-glow-strong);
+    }
+
+    .panel h3 {
+      margin: 0 0 8px;
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: .95rem;
+      letter-spacing: .02em;
+      transition: color .35s ease, text-shadow .35s ease;
+    }
+    .panel:hover h3 {
+      color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
+    }
+    .panel p { margin: 0; color: var(--muted); font-size: .88rem; transition: color .35s ease; }
+    .panel:hover p { color: #b9b9b9; }
+    .panel ul { margin: 10px 0 0; padding-left: 18px; color: var(--muted); font-size: .88rem; transition: color .35s ease; }
+    .panel:hover ul { color: #b9b9b9; }
+    .panel ul li { margin-bottom: 6px; }
+    .panel ul li strong { color: var(--text); }
+
+    /* Уровни владения навыками */
+    .skill-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      font-size: .86rem;
+    }
+    .skill-name {
+      flex: 0 0 130px;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .skill-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,.06);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .skill-bar span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #b89a00);
+      border-radius: 999px;
+      box-shadow: 0 0 12px var(--accent-glow);
+      transition: width 1.4s cubic-bezier(.2,.8,.3,1);
+      width: 0;
+    }
+    .skill-level {
+      flex: 0 0 90px;
+      text-align: right;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .skill-row:hover .skill-name { color: var(--accent); }
+    .skill-row:hover .skill-bar span { box-shadow: 0 0 20px var(--accent-glow-strong); }
+
+    .icon {
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+      color: var(--accent);
+      display: inline-block;
+      opacity: .9;
+      transition: transform .5s cubic-bezier(.2,.8,.3,1), text-shadow .4s ease;
+      text-shadow: 0 0 14px var(--accent-glow);
+      animation: iconSway 4s ease-in-out infinite;
+    }
+    @keyframes iconSway {
+      0%, 100% { transform: rotate(-4deg); }
+      50%      { transform: rotate(4deg); }
+    }
+    .panel:hover .icon {
+      animation: iconPulse 1.6s ease-in-out infinite;
+      text-shadow: 0 0 26px var(--accent-glow-strong);
+    }
+    @keyframes iconPulse {
+      0%, 100% { transform: rotate(180deg) scale(1.15); }
+      50%      { transform: rotate(180deg) scale(1.28); }
+    }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag {
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: #c9c9c9;
+      background: transparent;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: all .3s ease;
+      position: relative;
+    }
+    .tag:hover {
+      color: #060606;
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 0 22px var(--accent-glow-strong);
+      transform: translateY(-2px);
+      animation: tagPulse 1.2s ease-in-out infinite;
+    }
+    @keyframes tagPulse {
+      0%, 100% { box-shadow: 0 0 22px var(--accent-glow-strong); }
+      50%      { box-shadow: 0 0 34px var(--accent-glow-strong); }
+    }
+    .tag.focus {
+      border-color: rgba(255,212,0,.55);
+      color: var(--accent);
+      box-shadow: 0 0 12px -4px var(--accent-glow-strong);
+    }
+    .tag.learning {
+      border-style: dashed;
+      opacity: .75;
+    }
+
+    .achievements {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .ach {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      text-align: center;
+      transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .ach::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(255,212,0,.15), transparent 60%);
+      opacity: 0;
+      transition: opacity .5s ease;
+    }
+    .ach:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,212,0,.4);
+      box-shadow: 0 0 40px -12px var(--accent-glow-strong);
+    }
+    .ach:hover::before { opacity: 1; }
+    .ach .num {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 2.1rem;
+      color: var(--accent);
+      line-height: 1;
+      text-shadow: 0 0 20px var(--accent-glow);
+      display: block;
+      margin-bottom: 8px;
+      animation: numPulse 3s ease-in-out infinite;
+    }
+    @keyframes numPulse {
+      0%, 100% { text-shadow: 0 0 20px var(--accent-glow); }
+      50%      { text-shadow: 0 0 34px var(--accent-glow-strong); }
+    }
+    .ach .label {
+      font-size: .74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .timeline { display: grid; gap: 0; }
+    .timeline-item { display: grid; grid-template-columns: 180px 1fr; gap: 20px; }
+    .timeline-date {
+      color: var(--accent);
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transition: text-shadow .4s ease;
+    }
+    .timeline-item:hover .timeline-date {
+      text-shadow: 0 0 14px var(--accent-glow-strong);
+    }
+    .timeline-body {
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      transition: border-color .4s ease, padding-left .4s ease;
+      position: relative;
+    }
+    .timeline-body::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 1px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      transition: width .6s ease;
+    }
+    .timeline-item:hover .timeline-body::after {
+      width: 100%;
+      box-shadow: 0 0 8px var(--accent-glow-strong);
+    }
+    .timeline-item:hover .timeline-body {
+      border-color: transparent;
+      padding-left: 8px;
+    }
+    .timeline-body h3 {
+      margin: 0 0 5px;
+      font-size: .95rem;
+      font-weight: 500;
+      transition: color .35s ease, text-shadow .35s ease;
+    }
+    .timeline-item:hover .timeline-body h3 {
+      color: var(--accent);
+      text-shadow: 0 0 14px var(--accent-glow);
+    }
+    .timeline-body p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .timeline-body ul { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: .88rem; }
+    .timeline-body ul li { margin-bottom: 6px; }
+    .timeline-item:last-child .timeline-body { border-bottom: 0; }
+
+    /* Результаты в опыте — БЕЗ border-left */
+    .result {
+      display: block;
+      margin-top: 8px;
+      padding: 8px 14px;
+      background: rgba(255,212,0,.05);
+      border-radius: 8px;
+      border: 1px solid rgba(255,212,0,.12);
+      font-size: .82rem;
+      color: #c9c9c9;
+    }
+    .result b { color: var(--accent); font-weight: 500; }
+
+    .timeline-body .links {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .timeline-body .links a {
+      font-size: .76rem;
+      color: var(--accent);
+      border-bottom: 1px dashed rgba(255,212,0,.4);
+      transition: color .25s, text-shadow .25s;
+    }
+    .timeline-body .links a:hover {
+      color: #fff;
+      text-shadow: 0 0 12px var(--accent-glow-strong);
+    }
+
+    /* ===== СЛАЙДЕР ===== */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--panel);
+      transition: box-shadow .5s ease, border-color .5s ease;
+    }
+    .slider:hover {
+      border-color: rgba(255,212,0,.35);
+      box-shadow: 0 0 40px -10px var(--accent-glow);
+    }
+    .slider-track {
+      display: flex;
+      transition: transform .7s cubic-bezier(.25,.8,.25,1);
+      will-change: transform;
+    }
+    .slide {
+      flex: 0 0 100%;
+      min-height: 460px;
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .slide::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -120px;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,212,0,.16), transparent 70%);
+      filter: blur(30px);
+      pointer-events: none;
+      animation: blobPulse 8s ease-in-out infinite;
+    }
+    @keyframes blobPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.3); opacity: .7; }
+    }
+    .slide:hover::after { transform: scale(1.4); }
+    .slide > * { position: relative; z-index: 1; }
+    .slide-index {
+      font-size: .72rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .slide h3 {
+      font-family: var(--mono);
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      letter-spacing: -.01em;
+      margin: 0 0 14px;
+      color: var(--text);
+      transition: color .35s, text-shadow .35s;
+    }
+    .slide:hover h3 {
+      color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
+    }
+    .slide p {
+      color: var(--muted);
+      font-size: .92rem;
+      max-width: 680px;
+      margin: 0 0 8px;
+      word-break: break-word;
+    }
+    .slide p a { color: var(--accent); border-bottom: 1px solid rgba(255,212,0,.4); }
+    .slide p strong { color: var(--text); font-weight: 500; }
+    .slide-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .slide-meta .tag { font-size: .68rem; }
+    .slide-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .slide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: .76rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      transition: color .25s, transform .25s;
+    }
+    .slide-link:hover { color: var(--accent); transform: translateX(6px); }
+
+    .slider-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      background: rgba(8,8,8,.7);
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      cursor: pointer;
+      transition: background .25s, color .25s, border-color .25s, transform .25s, box-shadow .3s;
+      z-index: 3;
+    }
+    .slider-nav:hover {
+      background: var(--accent);
+      color: #060606;
+      border-color: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow-strong);
+      animation: btnPulse 1.2s ease-in-out infinite;
+    }
+    .slider-nav:active { transform: translateY(-50%) scale(.94); }
+    .slider-prev { left: 16px; }
+    .slider-next { right: 16px; }
+    .slider-nav svg { width: 18px; height: 18px; fill: currentColor; transition: transform .3s ease; }
+    .slider-nav:hover svg { transform: scale(1.2); }
+
+    .slider-dots {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 3;
+    }
+    .slider-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: rgba(255,255,255,.25);
+      cursor: pointer;
+      transition: background .25s, transform .25s, box-shadow .25s;
+    }
+    .slider-dot:hover { background: rgba(255,212,0,.6); transform: scale(1.2); }
+    .slider-dot.active {
+      background: var(--accent);
+      transform: scale(1.3);
+      box-shadow: 0 0 12px var(--accent);
+      animation: dotPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { box-shadow: 0 0 12px var(--accent); }
+      50%      { box-shadow: 0 0 24px var(--accent), 0 0 36px var(--accent-glow-strong); }
+    }
+
+    /* ===== ОТЗЫВЫ ===== */
+    .reviews {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .review {
+      padding: 30px 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      position: relative;
+      overflow: hidden;
+      transition: transform .45s ease, border-color .45s ease, box-shadow .45s ease;
+      isolation: isolate;
+    }
+    .review::before {
+      content: "«";
+      position: absolute;
+      top: -30px;
+      right: 10px;
+      font-family: var(--gothic-display);
+      font-size: 10rem;
+      color: var(--accent);
+      opacity: .07;
+      line-height: 1;
+      pointer-events: none;
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .review:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,212,0,.45);
+      box-shadow:
+        0 0 0 1px rgba(255,212,0,.15),
+        0 20px 45px -20px rgba(0,0,0,.9),
+        0 0 40px -10px var(--accent-glow);
+    }
+    .review:hover::before {
+      opacity: .14;
+      transform: scale(1.08) rotate(-3deg);
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .review-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,212,0,.1);
+      border: 1px solid rgba(255,212,0,.35);
+      color: var(--accent);
+      font-family: var(--gothic-display);
+      font-size: 1.2rem;
+      flex: 0 0 auto;
+      text-shadow: 0 0 14px var(--accent-glow);
+      transition: transform .5s ease, box-shadow .4s ease;
+    }
+    .review:hover .review-avatar {
+      transform: rotate(360deg) scale(1.08);
+      box-shadow: 0 0 22px var(--accent-glow-strong);
+    }
+    .review-meta h4 {
+      margin: 0 0 2px;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: .02em;
+    }
+    .review-meta span {
+      font-size: .74rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .review-text {
+      color: var(--muted);
+      font-size: .92rem;
+      margin: 0;
+      line-height: 1.75;
+    }
+    .review-text strong { color: var(--text); font-weight: 500; }
+    .review-text em {
+      color: var(--accent);
+      font-style: normal;
+      border-bottom: 1px dashed rgba(255,212,0,.4);
+    }
+    .review-stars {
+      display: inline-flex;
+      gap: 4px;
+      margin-top: 16px;
+      color: var(--accent);
+      font-size: .9rem;
+      letter-spacing: .2em;
+      text-shadow: 0 0 12px var(--accent-glow);
+    }
+    .review-tag {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: all .3s ease;
+    }
+    .review:hover .review-tag {
+      color: #060606;
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 18px var(--accent-glow-strong);
+    }
+    .review-contacts {
+      margin-top: 14px;
+      font-size: .78rem;
+      color: var(--muted-2);
+      border-top: 1px dashed var(--border);
+      padding-top: 10px;
+    }
+    .review-contacts a { color: var(--accent); }
+
+    /* ===== FAQ ===== */
+    .faq { display: grid; gap: 10px; }
+    .faq details {
+      padding: 18px 22px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      transition: border-color .4s, background .4s, box-shadow .4s, transform .4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .faq details::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform .45s ease;
+      box-shadow: 0 0 14px var(--accent-glow-strong);
+    }
+    .faq details[open] {
+      border-color: rgba(255,212,0,.4);
+      background: rgba(255,212,0,.04);
+      box-shadow: 0 0 30px -10px var(--accent-glow);
+    }
+    .faq details[open]::before { transform: scaleY(1); }
+    .faq details:hover {
+      border-color: rgba(255,212,0,.3);
+      transform: translateX(3px);
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 400;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: .95rem;
+      letter-spacing: .02em;
+      color: var(--text);
+      transition: color .3s ease;
+    }
+    .faq details:hover summary { color: var(--accent); }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after {
+      content: "+";
+      font-size: 1.3rem;
+      color: var(--accent);
+      transition: transform .35s ease, text-shadow .3s ease;
+      line-height: 1;
+      font-weight: 300;
+      flex: 0 0 auto;
+    }
+    .faq details[open] summary::after {
+      transform: rotate(45deg);
+      text-shadow: 0 0 14px var(--accent-glow-strong);
+      animation: plusPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes plusPulse {
+      0%, 100% { text-shadow: 0 0 14px var(--accent-glow-strong); }
+      50%      { text-shadow: 0 0 26px var(--accent-glow-strong); }
+    }
+    .faq details p {
+      margin: 12px 0 0;
+      color: var(--muted);
+      animation: fadeIn .4s ease;
+      font-size: .9rem;
+    }
+    .faq details p a { color: var(--accent); border-bottom: 1px solid rgba(255,212,0,.4); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== CONTACT CARD ===== */
+    .contact-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 34px;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      background: linear-gradient(120deg, rgba(255,212,0,.06), rgba(255,255,255,.015) 60%);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow .5s ease, border-color .5s ease;
+    }
+    .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 90% 0%, rgba(255,212,0,.12), transparent 45%);
+      pointer-events: none;
+      transition: opacity .5s ease;
+      animation: contactGlow 6s ease-in-out infinite;
+    }
+    @keyframes contactGlow {
+      0%, 100% { opacity: .8; }
+      50%      { opacity: 1.4; }
+    }
+    .contact-card:hover {
+      border-color: rgba(255,212,0,.45);
+      box-shadow:
+        0 0 0 1px rgba(255,212,0,.15),
+        0 20px 50px -20px rgba(0,0,0,.9),
+        0 0 60px -15px var(--accent-glow);
+    }
+    .contact-card > * { position: relative; z-index: 1; }
+    .contact-card p { max-width: 600px; margin: 9px 0 0; color: var(--muted); font-size: .9rem; }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .contact-list a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.02);
+      font-size: .86rem;
+      color: var(--text);
+      transition: transform .3s ease, border-color .3s ease, background .3s ease, box-shadow .4s ease;
+      width: fit-content;
+      max-width: 100%;
+      word-break: break-word;
+    }
+    .contact-list a svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+      flex: 0 0 auto;
+      transition: transform .4s ease, filter .4s ease;
+    }
+    .contact-list a:hover {
+      transform: translateX(6px);
+      border-color: var(--accent);
+      background: rgba(255,212,0,.06);
+      box-shadow: 0 0 26px var(--accent-glow-strong);
+      animation: contactLinkPulse 1.6s ease-in-out infinite;
+    }
+    @keyframes contactLinkPulse {
+      0%, 100% { box-shadow: 0 0 26px var(--accent-glow-strong); }
+      50%      { box-shadow: 0 0 40px var(--accent-glow-strong); }
+    }
+    .contact-list a:hover svg {
+      transform: rotate(360deg) scale(1.15);
+      filter: drop-shadow(0 0 8px var(--accent-glow-strong));
+    }
+
+    footer {
+      padding: 30px 0 44px;
+      color: var(--muted-2);
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--border);
+      position: relative;
+    }
+    .footer-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      letter-spacing: .1em;
+    }
+    .footer-line .copyright { color: var(--muted); }
+    .footer-line .name { color: var(--text); letter-spacing: .08em; }
+
+    .side-contacts {
+      position: fixed;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(8,8,8,.7);
+      backdrop-filter: blur(14px);
+    }
+    .side-contacts .icon-btn {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      color: var(--muted);
+      background: transparent;
+      transition: transform .3s ease, border-color .3s ease, background .3s ease, color .3s ease, box-shadow .4s ease;
+    }
+    .side-contacts .icon-btn svg { width: 18px; height: 18px; fill: currentColor; display: block; transition: transform .4s ease; }
+    .side-contacts .icon-btn:hover {
+      transform: translateY(-3px) scale(1.08);
+      color: #060606;
+      border-color: var(--accent);
+      background: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow-strong);
+      animation: btnPulse 1.4s ease-in-out infinite;
+    }
+    .side-contacts .icon-btn:hover svg { transform: rotate(360deg); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s cubic-bezier(.2,.8,.3,1), transform 1s cubic-bezier(.2,.8,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .grid .panel,
+    .reviews .review {
+      opacity: 0;
+      transform: translateY(40px);
+      transition:
+        opacity .9s cubic-bezier(.2,.8,.3,1),
+        transform .9s cubic-bezier(.2,.8,.3,1),
+        border-color .45s ease,
+        background .45s ease,
+        box-shadow .45s ease;
+    }
+    .reveal.visible .grid .panel,
+    .reveal.visible .reviews .review {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.visible .grid .panel:nth-child(1),
+    .reveal.visible .reviews .review:nth-child(1) { transition-delay: .05s; }
+    .reveal.visible .grid .panel:nth-child(2),
+    .reveal.visible .reviews .review:nth-child(2) { transition-delay: .15s; }
+    .reveal.visible .grid .panel:nth-child(3) { transition-delay: .25s; }
+    .reveal.visible .grid .panel:nth-child(4) { transition-delay: .35s; }
+
+    /* Двухколоночный список сертификатов */
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .cert {
+      padding: 16px 18px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.015);
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+    }
+    .cert:hover {
+      border-color: rgba(255,212,0,.4);
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px -12px var(--accent-glow-strong);
+    }
+    .cert h4 {
+      margin: 0 0 4px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .cert span {
+      display: block;
+      font-size: .74rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .cert p { margin: 0; font-size: .82rem; color: var(--muted); }
+
+    @media (max-width: 1180px) {
+      .side-contacts { right: 10px; padding: 8px; gap: 8px; }
+      .side-contacts .icon-btn { width: 38px; height: 38px; }
+      .side-contacts .icon-btn svg { width: 16px; height: 16px; }
+    }
+    @media (max-width: 900px) {
+      .side-contacts { display: none; }
+      .three { grid-template-columns: 1fr; }
+      .achievements { grid-template-columns: repeat(2, 1fr); }
+      .reviews { grid-template-columns: 1fr; }
+      .cert-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+      .topbar { top: 8px; width: calc(100% - 20px); }
+      .nav { padding: 0 14px; min-height: 56px; }
+      .nav-links { display: none; }
+      .brand { font-size: 1.35rem; }
+      .two { grid-template-columns: 1fr; }
+      .contact-card { align-items: flex-start; flex-direction: column; }
+      .slide { padding: 36px 28px; min-height: 420px; }
+      .slider-nav { width: 38px; height: 38px; }
+      .slider-prev { left: 10px; }
+      .slider-next { right: 10px; }
+      .face-wrap { width: min(560px, 78vw); }
+      .marquee-content { font-size: .72rem; gap: 22px; }
+      .marquee-content span { gap: 22px; }
+      .skill-name { flex: 0 0 100px; font-size: .8rem; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(var(--max-width), calc(100% - 28px)); }
+      .nav { min-height: 52px; }
+      .nav .button { padding: 8px 12px; font-size: .66rem; }
+      .brand { font-size: 1.15rem; }
+      .hero { padding: 110px 0 60px; }
+      section { padding: 60px 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+      .panel, .review { padding: 20px; }
+      .slide { padding: 30px 22px; min-height: 440px; }
+      .slide h3 { font-size: 1.3rem; }
+      .face-wrap { width: min(420px, 82vw); }
+      .marquee { padding: 10px 0; }
+      .marquee-content { font-size: .66rem; letter-spacing: .16em; gap: 18px; }
+      .marquee-content span { gap: 18px; }
+      .faq details { padding: 16px 18px; }
+      .faq summary { font-size: .88rem; }
+      .achievements { grid-template-columns: 1fr; }
+      .skill-row { flex-wrap: wrap; }
+      .skill-level { flex: 0 0 100%; text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="glow-bg" aria-hidden="true" id="glowBg"></div>
+
+  <aside class="side-contacts" aria-label="Быстрые контакты">
+    <a class="icon-btn" href="mailto:luizakorakina24@gmail.com" aria-label="Написать на почту" title="luizakorakina24@gmail.com">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.3-.5 7.7 6.02L19.7 5H4.3ZM20 6.9l-7.4 5.78a1 1 0 0 1-1.2 0L4 6.9v11.6c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V6.9Z"/>
+      </svg>
+    </a>
+    <a class="icon-btn" href="tel:+79657398889" aria-label="Позвонить" title="+7 (965) 739-88-89">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+      </svg>
+    </a>
+    <a class="icon-btn" href="https://t.me/your_username" target="_blank" rel="noreferrer" aria-label="Telegram" title="Telegram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M21.94 4.3a1.2 1.2 0 0 0-1.24-.2L3.3 10.8c-.9.36-.86 1.66.06 1.96l4.2 1.36 1.6 5.06c.24.76 1.2.95 1.72.35l2.34-2.7 4.3 3.15c.6.44 1.46.11 1.6-.62l3.1-14.2a1.2 1.2 0 0 0-.28-.86ZM9.6 13.5l8.1-5.36-6.5 6.32-.24 2.5-1.36-3.46Z"/>
+      </svg>
+    </a>
+    <a class="icon-btn" href="https://github.com/jlixsd" target="_blank" rel="noreferrer" aria-label="GitHub" title="github.com/jlixsd">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.11-1.5-1.11-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/>
+      </svg>
+    </a>
+    <a class="icon-btn" href="https://vk.ru/jlixsd_fff" target="_blank" rel="noreferrer" aria-label="ВКонтакте" title="vk.ru/jlixsd_fff">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12.785 16.241s.288-.032.436-.192c.136-.147.132-.423.132-.423s-.02-1.292.583-1.482c.595-.188 1.359 1.266 2.169 1.827.613.424 1.079.331 1.079.331l2.169-.03s1.134-.07.596-1.002c-.044-.073-.312-.658-1.605-1.86-1.352-1.26-1.171-1.056.457-3.234.99-1.325 1.386-2.134 1.262-2.48-.118-.33-.85-.243-.85-.243l-2.442.015s-.181-.025-.315.056c-.131.079-.215.263-.215.263s-.387 1.03-.902 1.906c-1.088 1.847-1.522 1.945-1.7 1.83-.41-.266-.307-1.066-.307-1.633 0-1.777.271-2.517-.527-2.709-.264-.063-.458-.105-1.133-.112-.866-.009-1.598.003-2.013.206-.276.135-.49.436-.359.453.161.022.525.098.718.36.25.338.241 1.096.241 1.096s.143 2.09-.334 2.35c-.328.178-.778-.185-1.745-1.85-.496-.859-.87-1.808-.87-1.808s-.073-.178-.203-.273c-.158-.115-.379-.152-.379-.152l-2.32.015s-.348.01-.476.161c-.114.135-.009.414-.009.414s1.817 4.25 3.874 6.39c1.886 1.966 4.026 1.837 4.026 1.837l.97-.007Z"/>
+      </svg>
+    </a>
+  </aside>
+
+  <header class="topbar">
+    <div class="nav">
+      <nav class="nav-links" aria-label="Основная навигация">
+        <a href="#about">Обо мне</a>
+        <a href="#personal">Личное</a>
+        <a href="#skills">Навыки</a>
+        <a href="#experience">Опыт</a>
+        <a href="#projects">Проекты</a>
+        <a href="#certs">Курсы</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="brand" href="#home" aria-label="JLIXSD">JLIXSD</a>
+      <a class="button" href="#contacts">Связаться <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home">
+        <div class="eyebrow">Портфолио · резюме · Junior Frontend</div>
+
+        <div class="face-wrap">
+          <img class="face-photo"
+               src="./picture/lui.png"
+               alt="Корякина Луиза Алексеевна" />
+        </div>
+
+        <div class="hero-sub">
+          <h2>Корякина <span class="accent-text">Луиза</span></h2>
+
+          <p class="hero-tagline">
+            <strong>Junior frontend-разработчик.</strong> Превращаю макеты из Figma в чистый,
+            адаптивный и кроссбраузерный код на <strong>HTML, CSS, JavaScript и React</strong>.
+            Беру на себя рутинные задачи по вёрстке и логике, чтобы освободить время senior-разработчиков
+            для архитектуры и сложных фич.
+          </p>
+
+          <div class="hero-facts">
+            <span class="hero-fact">Опыт в <b>Т-Банке</b> — junior frontend</span>
+            <span class="hero-fact">4 курс <b>ВКСиИТ</b></span>
+            <span class="hero-fact"><b>6</b> профильных курсов</span>
+            <span class="hero-fact"><b>4+</b> проекта в портфолио</span>
+            <span class="hero-fact">Английский <b>B2</b></span>
+          </div>
+
+          <p class="hero-copy">
+            <span class="type-line">Открыта к стажировке и junior-позициям</span><br>
+            Готова выполнить тестовое задание и приступить в течение 1–2 недель.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Смотреть проекты</a>
+            <a class="button" href="mailto:luizakorakina24@gmail.com">Написать на почту</a>
+            <a class="button" href="#contacts">Обсудить вакансию</a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="marquee" aria-label="Ищу стажировку или junior-позицию">
+      <div class="marquee-track">
+        <div class="marquee-content">
+          <span>Ищу стажировку или junior-позицию</span>
+          <span>Frontend · React · JavaScript · адаптивная вёрстка</span>
+          <span>Опыт в Т-Банке</span>
+          <span>Готова к тестовому заданию</span>
+          <span>Портфолио и резюме — на этом сайте</span>
+          <span>luizakorakina24@gmail.com</span>
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+          <span>Ищу стажировку или junior-позицию</span>
+          <span>Frontend · React · JavaScript · адаптивная вёрстка</span>
+          <span>Опыт в Т-Банке</span>
+          <span>Готова к тестовому заданию</span>
+          <span>Портфолио и резюме — на этом сайте</span>
+          <span>luizakorakina24@gmail.com</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <section id="about" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">01 — Профиль</div>
+          <h2>Обо мне</h2>
+          <p class="section-desc">Кратко о том, чем могу быть полезна команде.</p>
+        </div>
+        <div class="grid two">
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">✳</div>
+            <h3>Чем я полезна</h3>
+            <p>Специализируюсь на <strong>адаптивной кроссбраузерной вёрстке</strong> и интерактивной логике на чистом JavaScript и React. Умею работать с готовыми макетами из Figma, поддерживать существующий код и разбираться в чужой кодовой базе.</p>
+            <ul>
+              <li><strong>Вёрстка:</strong> pixel-perfect, адаптив, кроссбраузерность</li>
+              <li><strong>Логика:</strong> интерактивные компоненты, работа с API, DOM</li>
+              <li><strong>Процесс:</strong> Git, code review, работа в команде</li>
+            </ul>
+            <p style="margin-top:12px;">
+              <strong style="color:var(--text);">Формат работы:</strong> полная или частичная занятость, стажировка.
+              Удалённо, гибрид или офис — открыта ко всем вариантам.
+            </p>
+          </article>
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">⌘</div>
+            <h3>Образование</h3>
+            <p>Учусь в Вологодском колледже связи и информационных технологий (ВКСиИТ) на 4 курсе по специальности 09.02.07 «Информационные системы и программирование», квалификация — «Разработчик веб и мультимедийных приложений».</p>
+            <p style="margin-top:12px;">
+              <strong style="color:var(--text);">Ключевое:</strong> работа junior-frontend разработчиком в Т-Банке,
+              практика в двух организациях, 6 профильных курсов с защищёнными проектами.
+            </p>
+          </article>
+        </div>
+
+        <div class="achievements">
+          <div class="ach">
+            <span class="num">4</span>
+            <span class="label">курс ВКСиИТ</span>
+          </div>
+          <div class="ach">
+            <span class="num">6</span>
+            <span class="label">профильных курсов</span>
+          </div>
+          <div class="ach">
+            <span class="num">4+</span>
+            <span class="label">проекта в портфолио</span>
+          </div>
+          <div class="ach">
+            <span class="num">3</span>
+            <span class="label">места работы / практики</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="personal" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">02 — Личное</div>
+          <h2>Личная информация</h2>
+          <p class="section-desc">Факты обо мне, увлечения и языки.</p>
+        </div>
+        <div class="grid three">
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">◈</div>
+            <h3>Основное</h3>
+            <ul>
+              <li>Гражданство: Российская Федерация</li>
+              <li>Образование: ВКСиИТ, 4 курс</li>
+              <li>Возраст: 17 лет</li>
+              <li>Город: Вологда, готова к релокации</li>
+              <li>Семейное положение: не замужем</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">✦</div>
+            <h3>Увлечения</h3>
+            <p>Шахматы, рисование, бокс, плавание, музыка.</p>
+          </article>
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">✧</div>
+            <h3>Языки</h3>
+            <ul>
+              <li>Русский — родной</li>
+              <li>Английский — B2 (технический)</li>
+              <li>Немецкий — разговорный</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">03 — Компетенции</div>
+          <h2>Hard и Soft skills</h2>
+          <p class="section-desc">Честно: жёлтым выделено то, чем владею уверенно. Пунктиром — то, что изучаю.</p>
+        </div>
+        <div class="grid two">
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">◈</div>
+            <h3>Hard skills</h3>
+            <p>Уровень владения — по самооценке, подтверждается проектами ниже.</p>
+
+            <div style="margin-top:18px;">
+              <div class="skill-row">
+                <span class="skill-name">HTML5</span>
+                <span class="skill-bar"><span data-level="92"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">CSS3</span>
+                <span class="skill-bar"><span data-level="90"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-bar"><span data-level="78"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">React</span>
+                <span class="skill-bar"><span data-level="70"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Git</span>
+                <span class="skill-bar"><span data-level="75"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Figma</span>
+                <span class="skill-bar"><span data-level="72"></span></span>
+                <span class="skill-level">Уверенно</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">Python</span>
+                <span class="skill-bar"><span data-level="60"></span></span>
+                <span class="skill-level">Базово</span>
+              </div>
+              <div class="skill-row">
+                <span class="skill-name">SQL</span>
+                <span class="skill-bar"><span data-level="55"></span></span>
+                <span class="skill-level">Базово</span>
+              </div>
+            </div>
+
+            <p style="margin-top:16px; font-size:.84rem;">
+              <strong style="color:var(--text);">Инструменты:</strong> Git, Webpack, npm, VS Code, Chrome DevTools.
+            </p>
+            <p style="margin-top:8px; font-size:.84rem;">
+              <strong style="color:var(--text);">Изучаю сейчас:</strong> TypeScript, тестирование (Jest), Vue.
+            </p>
+
+            <div class="tag-list">
+              <span class="tag focus">HTML5</span><span class="tag focus">CSS3</span>
+              <span class="tag focus">JavaScript</span><span class="tag focus">React</span>
+              <span class="tag focus">Git</span><span class="tag focus">Figma</span>
+              <span class="tag">Python</span><span class="tag">SQL</span>
+              <span class="tag learning">TypeScript</span>
+              <span class="tag learning">Vue</span>
+              <span class="tag learning">Jest</span>
+            </div>
+          </article>
+          <article class="panel">
+            <span class="panel-line"></span>
+            <div class="icon">✦</div>
+            <h3>Soft skills</h3>
+            <p>Четыре качества, которые я подтверждаю на практике:</p>
+            <ul>
+              <li><strong>Обучаемость.</strong> За год прошла путь от нуля до junior-позиции в Т-Банке — быстро осваиваю новые технологии и инструменты.</li>
+              <li><strong>Работа в команде.</strong> В Т-Банке работала с Git и code review, принимала обратную связь и задавала уточняющие вопросы.</li>
+              <li><strong>Тайм-менеджмент.</strong> Совмещала учёбу, работу и 6 курсов — все проекты сданы в срок.</li>
+              <li><strong>Внимание к деталям.</strong> Верстаю pixel-perfect, проверяю кроссбраузерность и адаптив на реальных устройствах.</li>
+            </ul>
+            <div class="tag-list">
+              <span class="tag">Обучаемость</span>
+              <span class="tag">Командная работа</span>
+              <span class="tag">Тайм-менеджмент</span>
+              <span class="tag">Внимание к деталям</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">04 — Опыт и образование</div>
+          <h2>Мой путь</h2>
+          <p class="section-desc">Опыт описан по схеме «Задача → Действие → Результат».</p>
+        </div>
+        <div class="panel timeline">
+          <span class="panel-line"></span>
+          <div class="timeline-item">
+            <div class="timeline-date">2025 — н.в.<br>Работа</div>
+            <div class="timeline-body">
+              <h3>Т-Банк — Junior Frontend-разработчик</h3>
+              <p>Работала в команде фронтенд-разработки над внутренними интерфейсами.</p>
+              <ul>
+                <li>Разработала <strong>15+ переиспользуемых UI-компонентов</strong> (кнопки, формы, карточки), которые вошли в общую библиотеку команды.</li>
+                <li>Участвовала в <strong>code review</strong>: принимала обратную связь и сама ревьюила код коллег.</li>
+                <li>Работала с <strong>Git Flow</strong>: ветки, pull request, разрешение конфликтов.</li>
+              </ul>
+              <span class="result"><b>Результат:</b> компоненты ускорили сборку новых страниц примерно на 20%, получила положительную рекомендацию от команды.</span>
+              <div class="links">
+                <a href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Профиль GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024 · Практика</div>
+            <div class="timeline-body">
+              <h3>ООО «Институт Акатан»</h3>
+              <p>Производственная практика в команде разработки.</p>
+              <ul>
+                <li>Разобралась с внутренними инструментами и кодовой базой за первую неделю.</li>
+                <li>Выполняла задачи по вёрстке и небольшие доработки интерфейсов.</li>
+              </ul>
+              <span class="result"><b>Результат:</b> все задачи сданы в срок, получена рекомендация от руководителя практики.</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2024 · Практика</div>
+            <div class="timeline-body">
+              <h3>ПАТП №1</h3>
+              <p>Разработка учебного сайта для предприятия в рамках практики.</p>
+              <ul>
+                <li>Сверстала адаптивный сайт: главная, услуги, контакты.</li>
+                <li>Обеспечила корректное отображение на мобильных, планшетах и десктопе.</li>
+                <li>Учла замечания руководителя и внесла правки в течение дня.</li>
+              </ul>
+              <span class="result"><b>Результат:</b> оценка «отлично», сайт используется как учебный кейс предприятия.</span>
+              <div class="links">
+                <a href="https://luizakorakina24.github.io/patp1/index.html" target="_blank" rel="noreferrer">Смотреть сайт ↗</a>
+                <a href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Код на GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2022 — 2026<br>Образование</div>
+            <div class="timeline-body">
+              <h3>ВКСиИТ — 4 курс</h3>
+              <p>Специальность 09.02.07 «Информационные системы и программирование», квалификация «Разработчик веб и мультимедийных приложений».</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="certs" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">05 — Обучение</div>
+          <h2>Сертификаты и курсы</h2>
+          <p class="section-desc">6 профильных курсов. По каждому — защищённый проект, который можно посмотреть.</p>
+        </div>
+        <div class="cert-list">
+          <div class="cert">
+            <span>2024 · Яндекс Практикум</span>
+            <h4>Веб-разработчик</h4>
+            <p>Защищённый проект: адаптивный лендинг с интерактивными элементами на JS.</p>
+          </div>
+          <div class="cert">
+            <span>2024 · Skillbox</span>
+            <h4>Frontend-разработчик</h4>
+            <p>Защищённый проект: SPA на React с роутингом и работой с API.</p>
+          </div>
+          <div class="cert">
+            <span>2024 · OTUS</span>
+            <h4>JavaScript Developer</h4>
+            <p>Защищённый проект: интерактивное веб-приложение с работой с DOM и событиями.</p>
+          </div>
+          <div class="cert">
+            <span>2023 · HTML Academy</span>
+            <h4>Профессия Frontend-разработчик</h4>
+            <p>Защищённый проект: pixel-perfect вёрстка многостраничного сайта по макету.</p>
+          </div>
+          <div class="cert">
+            <span>2024 · Нетология</span>
+            <h4>React-разработчик</h4>
+            <p>Защищённый проект: компонентная библиотека на React с хуками.</p>
+          </div>
+          <div class="cert">
+            <span>2023 · GeekBrains</span>
+            <h4>Fullstack-разработчик</h4>
+            <p>Защищённый проект: fullstack-приложение с фронтендом на JS и backend на Python.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">06 — Работы</div>
+          <h2>Примеры работ</h2>
+          <p class="section-desc">Слайдер с проектами. У каждого — задача, моя роль, стек, результат и ссылки на код.</p>
+        </div>
+
+        <div class="slider" id="projectSlider">
+          <div class="slider-track" id="sliderTrack">
+            <article class="slide">
+              <div>
+                <div class="slide-index">01 / 04 · UX/UI</div>
+                <h3>UX/UI design hab</h3>
+                <p><strong>Задача:</strong> разработать интерфейс учебного проекта по UX/UI с акцентом на удобство пользователя.</p>
+                <p><strong>Моя роль:</strong> дизайн интерфейса, вёрстка, интерактивная логика на JavaScript.</p>
+                <p><strong>Результат:</strong> адаптивный сайт с продуманной навигацией и интерактивными элементами. Живая ссылка: <a href="https://jlixsd.github.io/jlixsd555.githab.io" target="_blank" rel="noreferrer">jlixsd.github.io/jlixsd555.githab.io</a></p>
+                <div class="slide-meta">
+                  <span class="tag">HTML5</span><span class="tag">CSS3</span>
+                  <span class="tag">JavaScript</span><span class="tag">UX/UI</span>
+                </div>
+              </div>
+              <div class="slide-links">
+                <a class="slide-link" href="https://jlixsd.github.io/jlixsd555.githab.io" target="_blank" rel="noreferrer">Live-демо ↗</a>
+                <a class="slide-link" href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Код на GitHub ↗</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div>
+                <div class="slide-index">02 / 04 · Учебный проект</div>
+                <h3>ПАТП №1</h3>
+                <p><strong>Задача:</strong> сверстать сайт для предприятия ПАТП №1 в рамках производственной практики.</p>
+                <p><strong>Моя роль:</strong> адаптивная вёрстка, структура страниц, работа с Flexbox и CSS Grid.</p>
+                <p><strong>Результат:</strong> сайт с корректным отображением на всех устройствах, оценка «отлично». Живая ссылка: <a href="https://luizakorakina24.github.io/patp1/index.html" target="_blank" rel="noreferrer">luizakorakina24.github.io/patp1/index.html</a></p>
+                <div class="slide-meta">
+                  <span class="tag">Адаптив</span><span class="tag">Flexbox</span>
+                  <span class="tag">CSS Grid</span><span class="tag">JS</span>
+                </div>
+              </div>
+              <div class="slide-links">
+                <a class="slide-link" href="https://luizakorakina24.github.io/patp1/index.html" target="_blank" rel="noreferrer">Live-демо ↗</a>
+                <a class="slide-link" href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Код на GitHub ↗</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div>
+                <div class="slide-index">03 / 04 · Личный проект</div>
+                <h3>Гостиница «Чёрный мох»</h3>
+                <p><strong>Задача:</strong> разработать сайт для гостиницы с акцентом на атмосферу и удобство бронирования.</p>
+                <p><strong>Моя роль:</strong> pixel-perfect вёрстка по макету из Figma, проверка кроссбраузерности.</p>
+                <p><strong>Результат:</strong> сайт с адаптивом под мобильные, планшеты и десктоп. Живая ссылка: <a href="https://luizakorakina24.github.io/zaaaggost/" target="_blank" rel="noreferrer">luizakorakina24.github.io/zaaaggost/</a></p>
+                <div class="slide-meta">
+                  <span class="tag">Figma</span><span class="tag">Pixel-perfect</span>
+                  <span class="tag">Кроссбраузерность</span>
+                </div>
+              </div>
+              <div class="slide-links">
+                <a class="slide-link" href="https://luizakorakina24.github.io/zaaaggost/" target="_blank" rel="noreferrer">Live-демо ↗</a>
+                <a class="slide-link" href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Код на GitHub ↗</a>
+              </div>
+            </article>
+            <article class="slide">
+              <div>
+                <div class="slide-index">04 / 04 · Личный проект</div>
+                <h3>Ресторан Goat Maison</h3>
+                <p><strong>Задача:</strong> создать сайт для ресторана с интерактивной навигацией и меню.</p>
+                <p><strong>Моя роль:</strong> вёрстка, интерактивные компоненты на JavaScript (DOM, события), адаптив.</p>
+                <p><strong>Результат:</strong> сайт с меню и страницей услуг, работает без библиотек на чистом JS. Живая ссылка: <a href="https://jlixsd.github.io/Goatmaison/uslugi.html" target="_blank" rel="noreferrer">jlixsd.github.io/Goatmaison/uslugi.html</a></p>
+                <div class="slide-meta">
+                  <span class="tag">JavaScript</span><span class="tag">DOM</span>
+                  <span class="tag">UI</span><span class="tag">Адаптив</span>
+                </div>
+              </div>
+              <div class="slide-links">
+                <a class="slide-link" href="https://jlixsd.github.io/Goatmaison/uslugi.html" target="_blank" rel="noreferrer">Live-демо ↗</a>
+                <a class="slide-link" href="https://github.com/jlixsd" target="_blank" rel="noreferrer">Код на GitHub ↗</a>
+              </div>
+            </article>
+          </div>
+
+          <button class="slider-nav slider-prev" id="sliderPrev" aria-label="Предыдущий проект">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button class="slider-nav slider-next" id="sliderNext" aria-label="Следующий проект">
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59 10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+          </button>
+
+          <div class="slider-dots" id="sliderDots" aria-label="Навигация по проектам"></div>
+        </div>
+      </section>
+
+      <section id="reviews" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">07 — Рекомендации</div>
+          <h2>Отзывы от работодателей</h2>
+          <p class="section-desc">Отзывы с мест работы и практики. По запросу могу предоставить контакты рекомендателей.</p>
+        </div>
+
+        <div class="reviews">
+          <article class="review">
+            <div class="review-head">
+              <div class="review-avatar">Т</div>
+              <div class="review-meta">
+                <h4>Команда Frontend-разработки</h4>
+                <span>Т-Банк · 2025</span>
+              </div>
+            </div>
+            <p class="review-text">
+              «Луиза работала у нас на позиции <em>junior-frontend разработчика</em>. С первых недель
+              включилась в командные задачи: верстала компоненты интерфейса, разбиралась с готовой кодовой базой,
+              аккуратно работала с Git и охотно принимала <strong>обратную связь на code review</strong>.
+              Отмечаем её внимательность к деталям, дисциплину и умение задавать правильные вопросы, когда
+              что-то неясно. За время работы она заметно выросла и уверенно справлялась с задачами своего уровня.
+              Рекомендуем как ответственного и обучаемого разработчика.»
+            </p>
+            <div class="review-stars" aria-label="Оценка 5 из 5">★ ★ ★ ★ ★</div>
+            <span class="review-tag">Junior Frontend · 2025</span>
+            <div class="review-contacts">
+              Контакт для подтверждения — по запросу: <a href="mailto:luizakorakina24@gmail.com">luizakorakina24@gmail.com</a>
+            </div>
+          </article>
+
+          <article class="review">
+            <div class="review-head">
+              <div class="review-avatar">А</div>
+              <div class="review-meta">
+                <h4>Руководитель практики</h4>
+                <span>ООО «Институт Акатан» · 2024</span>
+              </div>
+            </div>
+            <p class="review-text">
+              «Луиза проходила у нас производственную практику. За время практики показала себя как
+              <em>ответственный и самостоятельный студент</em>: быстро разобралась с внутренними инструментами,
+              выполняла задачи по вёрстке и небольшие доработки в срок, вела себя корректно и профессионально
+              в общении с командой. <strong>Инициативна, не боится уточнять и предлагать идеи.</strong>
+              Рекомендуем к трудоустройству на junior-позиции.»
+            </p>
+            <div class="review-stars" aria-label="Оценка 5 из 5">★ ★ ★ ★ ★</div>
+            <span class="review-tag">Практика · 2024</span>
+          </article>
+
+          <article class="review">
+            <div class="review-head">
+              <div class="review-avatar">П</div>
+              <div class="review-meta">
+                <h4>Руководитель проекта</h4>
+                <span>ПАТП №1 · 2024</span>
+              </div>
+            </div>
+            <p class="review-text">
+              «В рамках практики Луиза разработала для нас <em>учебный сайт предприятия</em>. Сделала всё
+              аккуратно и в срок: адаптивная вёрстка, продуманная структура страниц, корректное отображение
+              на мобильных устройствах. Учла замечания и оперативно внесла правки. <strong>Оценка — отлично.</strong>
+              Спасибо за работу, готовы рекомендовать.»
+            </p>
+            <div class="review-stars" aria-label="Оценка 5 из 5">★ ★ ★ ★ ★</div>
+            <span class="review-tag">Практика · 2024</span>
+          </article>
+
+          <article class="review">
+            <div class="review-head">
+              <div class="review-avatar">К</div>
+              <div class="review-meta">
+                <h4>Куратор курса</h4>
+                <span>Яндекс Практикум · 2024</span>
+              </div>
+            </div>
+            <p class="review-text">
+              «Луиза прошла курс <em>«Веб-разработчик»</em> и показала стабильно высокие результаты:
+              все проектные работы сданы в срок, код — чистый и читаемый, вёрстка соответствует макетам.
+              Особенно хотим отметить её <strong>настойчивость в решении сложных задач</strong> и готовность
+              разбираться в деталях до конца. Рекомендуем как мотивированного junior-специалиста.»
+            </p>
+            <div class="review-stars" aria-label="Оценка 5 из 5">★ ★ ★ ★ ★</div>
+            <span class="review-tag">Курс · 2024</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="faq" class="reveal">
+        <div class="section-head">
+          <div class="section-kicker">08 — Вопросы</div>
+          <h2>Часто задаваемые вопросы</h2>
+          <p class="section-desc">Короткие ответы на то, что чаще всего спрашивают работодатели.</p>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>Вы готовы работать в офисе, удалённо или гибрид?</summary>
+            <p>Открыта ко всем форматам: офис, удалёнка и гибрид. Живу в Вологде, готова обсуждать переезд или релокацию, если это нужно команде. Главное — интересные задачи и возможность расти.</p>
+          </details>
+          <details>
+            <summary>Сколько часов в неделю вы готовы работать?</summary>
+            <p>Готова к полной занятости (40 часов в неделю). Также рассмотрю частичную занятость или стажировку, если это подходит под задачи команды.</p>
+          </details>
+          <details>
+            <summary>Какие у вас ожидания по зарплате?</summary>
+            <p>Ориентируюсь на рыночные ставки для junior-frontend разработчиков (от 40 000 ₽ на старте) и готова обсуждать условия индивидуально. Для меня важнее рост, задачи и команда, чем максимальная цифра на входе.</p>
+          </details>
+          <details>
+            <summary>Готовы ли вы к тестовому заданию?</summary>
+            <p>Да, готова. Могу выполнить тестовое задание по вёрстке или JavaScript — покажу код и объясню свои решения. Сроки и формат обсуждаемы.</p>
+          </details>
+          <details>
+            <summary>Какой у вас уровень английского?</summary>
+            <p>Английский на уровне B2 — свободно читаю техническую документацию, могу общаться в переписке и на созвонах на рабочие темы. Немецкий — разговорный.</p>
+          </details>
+          <details>
+            <summary>Что вы хотите делать в команде?</summary>
+            <p>Хочу заниматься фронтенд-разработкой: вёрсткой интерфейсов, работой с JavaScript и React, улучшением UX и адаптивности. Также интересно участвовать в код-ревью, тестировании и обсуждении архитектуры.</p>
+          </details>
+          <details>
+            <summary>Есть ли у вас pet-проекты и код?</summary>
+            <p>Да, в разделе «Примеры работ» — 4 проекта: UX/UI design hab, ПАТП №1, гостиница «Чёрный мох» и ресторан Goat Maison. У каждого есть живая ссылка, код — на GitHub (github.com/jlixsd).</p>
+          </details>
+          <details>
+            <summary>Можно ли получить рекомендации от руководителей?</summary>
+            <p>Да, в разделе «Отзывы» собраны рекомендации от команды Т-Банка и руководителей практики. По запросу могу предоставить контакты для подтверждения.</p>
+          </details>
+          <details>
+            <summary>Как быстро вы можете приступить к работе?</summary>
+            <p>Готова начать в течение 1–2 недель после согласования всех деталей. Если нужно — могу раньше.</p>
+          </details>
+          <details>
+            <summary>Как с вами связаться?</summary>
+            <p>Почта: <a href="mailto:luizakorakina24@gmail.com">luizakorakina24@gmail.com</a>. Телефон: <a href="tel:+79657398889">+7 (965) 739-88-89</a>. Telegram: <a href="https://t.me/your_username" target="_blank" rel="noreferrer">t.me/your_username</a>. GitHub: <a href="https://github.com/jlixsd" target="_blank" rel="noreferrer">github.com/jlixsd</a>. ВК: <a href="https://vk.ru/jlixsd_fff" target="_blank" rel="noreferrer">vk.ru/jlixsd_fff</a>.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contacts" class="reveal">
+        <div class="contact-card">
+          <div>
+            <div class="section-kicker">Контакты</div>
+            <h2>Буду рада знакомству</h2>
+            <p>Открыта к стажировке, junior-вакансиям и интересным задачам. Напишите мне — обсудим возможное сотрудничество. Готова выполнить тестовое задание.</p>
+
+            <div class="contact-list">
+              <a href="mailto:luizakorakina24@gmail.com">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13Zm2.3-.5 7.7 6.02L19.7 5H4.3ZM20 6.9l-7.4 5.78a1 1 0 0 1-1.2 0L4 6.9v11.6c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V6.9Z"/>
+                </svg>
+                luizakorakina24@gmail.com
+              </a>
+              <a href="tel:+79657398889">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.57.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.36 11.36 0 0 0 .57 3.57 1 1 0 0 1-.25 1.02l-2.2 2.2Z"/>
+                </svg>
+                +7 (965) 739-88-89
+              </a>
+              <a href="https://t.me/your_username" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21.94 4.3a1.2 1.2 0 0 0-1.24-.2L3.3 10.8c-.9.36-.86 1.66.06 1.96l4.2 1.36 1.6 5.06c.24.76 1.2.95 1.72.35l2.34-2.7 4.3 3.15c.6.44 1.46.11 1.6-.62l3.1-14.2a1.2 1.2 0 0 0-.28-.86ZM9.6 13.5l8.1-5.36-6.5 6.32-.24 2.5-1.36-3.46Z"/>
+                </svg>
+                Telegram
+              </a>
+              <a href="https://github.com/jlixsd" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.11-1.5-1.11-1.5-.9-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.34 1.12 2.91.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.9-1.33 2.74-1.05 2.74-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.93-2.35 4.8-4.58 5.05.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/>
+                </svg>
+                github.com/jlixsd
+              </a>
+              <a href="https://vk.ru/jlixsd_fff" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.785 16.241s.288-.032.436-.192c.136-.147.132-.423.132-.423s-.02-1.292.583-1.482c.595-.188 1.359 1.266 2.169 1.827.613.424 1.079.331 1.079.331l2.169-.03s1.134-.07.596-1.002c-.044-.073-.312-.658-1.605-1.86-1.352-1.26-1.171-1.056.457-3.234.99-1.325 1.386-2.134 1.262-2.48-.118-.33-.85-.243-.85-.243l-2.442.015s-.181-.025-.315.056c-.131.079-.215.263-.215.263s-.387 1.03-.902 1.906c-1.088 1.847-1.522 1.945-1.7 1.83-.41-.266-.307-1.066-.307-1.633 0-1.777.271-2.517-.527-2.709-.264-.063-.458-.105-1.133-.112-.866-.009-1.598.003-2.013.206-.276.135-.49.436-.359.453.161.022.525.098.718.36.25.338.241 1.096.241 1.096s.143 2.09-.334 2.35c-.328.178-.778-.185-1.745-1.85-.496-.859-.87-1.808-.87-1.808s-.073-.178-.203-.273c-.158-.115-.379-.152-.379-.152l-2.32.015s-.348.01-.476.161c-.114.135-.009.414-.009.414s1.817 4.25 3.874 6.39c1.886 1.966 4.026 1.837 4.026 1.837l.97-.007Z"/>
+                </svg>
+                vk.ru/jlixsd_fff
+              </a>
+              <a href="./resume.pdf" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1.5V8h4.5L14 3.5ZM8 13h8v1.5H8V13Zm0 3h8v1.5H8V16Zm0-6h5v1.5H8V10Z"/>
+                </svg>
+                Скачать PDF-резюме
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:luizakorakina24@gmail.com">Написать на почту ↗</a>
+            <a class="button" href="https://vk.ru/jlixsd_fff" target="_blank" rel="noreferrer">ВКонтакте ↗</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-line">
+        <span class="copyright">© <span id="year"></span> Все права защищены</span>
+        <span class="name">Корякина Луиза Алексеевна · JLIXSD</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    (function () {
+      const box = document.getElementById("glowBg");
+      if (!box) return;
+      const count = 8;
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement("span");
+        const size = Math.random() * 300 + 200;
+        s.style.width = size + "px";
+        s.style.height = size + "px";
+        s.style.left = (Math.random() * 100 - 15) + "%";
+        s.style.top = (Math.random() * 100 - 15) + "%";
+        s.style.animationDuration = (Math.random() * 14 + 10) + "s";
+        s.style.animationDelay = (Math.random() * 12) + "s";
+        box.appendChild(s);
+      }
+    })();
+
+    const reveals = document.querySelectorAll(".reveal");
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach((el) => io.observe(el));
+
+    const skillBars = document.querySelectorAll(".skill-bar span[data-level]");
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.dataset.level + "%";
+          skillObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    skillBars.forEach((bar) => skillObserver.observe(bar));
+
+    const img = document.querySelector(".face-photo");
+    if (img) {
+      img.style.opacity = "0";
+      img.style.transition = "opacity 1.4s ease, transform 1.2s cubic-bezier(.2,.8,.3,1), filter .6s";
+      img.style.transform = "scale(.96)";
+      const showImg = () => {
+        img.style.opacity = "1";
+        img.style.transform = "scale(1)";
+      };
+      if (img.complete) showImg();
+      else img.addEventListener("load", showImg);
+    }
+
+    (function () {
+      const slider = document.getElementById("projectSlider");
+      const track  = document.getElementById("sliderTrack");
+      const prev   = document.getElementById("sliderPrev");
+      const next   = document.getElementById("sliderNext");
+      const dotsEl = document.getElementById("sliderDots");
+      if (!slider || !track) return;
+
+      const slides = Array.from(track.children);
+      const total  = slides.length;
+      let index = 0;
+
+      slides.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.className = "slider-dot" + (i === 0 ? " active" : "");
+        b.type = "button";
+        b.setAttribute("aria-label", "Проект " + (i + 1));
+        b.addEventListener("click", () => go(i));
+        dotsEl.appendChild(b);
+      });
+      const dots = Array.from(dotsEl.children);
+
+      function update() {
+        track.style.transform = `translateX(${-index * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle("active", i === index));
+      }
+      function go(i) {
+        index = (i + total) % total;
+        update();
+      }
+      function nextSlide() { go(index + 1); }
+      function prevSlide() { go(index - 1); }
+
+      prev.addEventListener("click", prevSlide);
+      next.addEventListener("click", nextSlide);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") nextSlide();
+        if (e.key === "ArrowLeft")  prevSlide();
+      });
+
+      let startX = 0, deltaX = 0, dragging = false;
+      slider.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+        dragging = true;
+      }, { passive: true });
+      slider.addEventListener("touchmove", (e) => {
+        if (!dragging) return;
+        deltaX = e.touches[0].clientX - startX;
+      }, { passive: true });
+      slider.addEventListener("touchend", () => {
+        if (Math.abs(deltaX) > 40) {
+          deltaX < 0 ? nextSlide() : prevSlide();
+        }
+        dragging = false;
+        deltaX = 0;
+      });
+
+      let autoplay = setInterval(nextSlide, 7000);
+      slider.addEventListener("mouseenter", () => clearInterval(autoplay));
+      slider.addEventListener("mouseleave", () => {
+        autoplay = setInterval(nextSlide, 7000);
+      });
+
+      update();
+    })();
+  </script>
+</body>
+</html>
